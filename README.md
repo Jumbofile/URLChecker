@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://i.imgur.com/UlikdQb.png"><br><br>
+  <img src="https://i.imgur.com/UlikdQb.png" style="width:400px;height:400px;><br><br>
 </div>
 
 -----------------
@@ -11,7 +11,8 @@ URL verifier for checking if websites are online or blocked.
 ### Prerequisites
 
 Visual Studios
-.NET Framework version 4.7
+
+.NET Framework version 4.6.1
 
 ### Installing
 
