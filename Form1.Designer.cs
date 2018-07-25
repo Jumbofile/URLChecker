@@ -76,6 +76,7 @@ namespace URLChecker
             this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox2.Location = new System.Drawing.Point(1, 1);
             this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
             this.richTextBox2.Size = new System.Drawing.Size(354, 378);
             this.richTextBox2.TabIndex = 6;
             this.richTextBox2.Text = "";
@@ -163,7 +164,6 @@ namespace URLChecker
             this.Controls.Add(this.lStatus);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
-            this.Text = "URL Checker";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
