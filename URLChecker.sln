@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "URLChecker", "URLChecker.csproj", "{DD425E06-1D0C-4CE1-BDE5-F69CF36AB585}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD425E06-1D0C-4CE1-BDE5-F69CF36AB585}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{DD425E06-1D0C-4CE1-BDE5-F69CF36AB585}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{DD425E06-1D0C-4CE1-BDE5-F69CF36AB585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD425E06-1D0C-4CE1-BDE5-F69CF36AB585}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {77EBBBB3-7755-4E7A-AFC5-69031B48D684}
+	EndGlobalSection
+EndGlobal
