@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://i.imgur.com/UlikdQb.png"><br><br>
+  <img src="https://i.imgur.com/UlikdQbm.png"><br><br>
 </div>
 
 -----------------
