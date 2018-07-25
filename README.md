@@ -1,4 +1,9 @@
-![alt text](https://i.imgur.com/UlikdQb.png)
+<div align="center">
+  <img src="https://i.imgur.com/UlikdQb.png"><br><br>
+</div>
+
+-----------------
+
 # URLChecker
 
 URL verifier for checking if websites are online or blocked.
