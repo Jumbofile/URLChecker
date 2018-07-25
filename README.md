@@ -39,3 +39,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Visual C# Kicks - http://www.vcskicks.com - For base code
+
+##Screenshots
+
+![alt text](https://i.imgur.com/uvYZd92.png)
