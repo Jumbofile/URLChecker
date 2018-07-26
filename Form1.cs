@@ -7,6 +7,9 @@ using System.Windows.Forms;
 using System.Net;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Text.RegularExpressions;
+using System.Text;
+using System.IO;
 
 namespace URLChecker
 {
@@ -36,17 +39,25 @@ namespace URLChecker
 
             WebRequest request = WebRequest.Create(urlCheck);
             request.Timeout = 15000;
-
             WebResponse response;
+
             try
             {
                 //get URL web response
                 response = request.GetResponse();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 this.Cursor = Cursors.Default;
-                return false; //url does not exist
+                Console.WriteLine(url + " : " + e);
+                if (e.Message.Contains("Server Unavailable") || e.Message.Contains("Forbidden") || e.Message.Contains("timed out"))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true; //url does not exist
+                }
             }            
 
             string responseURL = response.ResponseUri.ToString();
@@ -54,13 +65,30 @@ namespace URLChecker
             //Update UI
             this.Cursor = Cursors.Default;
             Application.DoEvents();
-            if (string.Compare(responseURL, urlCheck.ToString(), true) != 0) //it was redirected, check to see if redirected to error page
-                   return !(responseURL.IndexOf("404.php") > -1 ||
-                          responseURL.IndexOf("500.php") > -1 ||
-                          responseURL.IndexOf("404.htm") > -1 ||
-                          responseURL.IndexOf("500.htm") > -1);
-            else
+            Console.WriteLine(responseURL);
+            Console.WriteLine(responseURL.Length);
+            if (responseURL.Equals(urlCheck.ToString()))
+            { //it was redirected, check to see if redirected to error page
+                Console.WriteLine("YES" + responseURL);
                 return true; //everything okay
+               
+            }
+            else
+            {
+                Console.WriteLine(responseURL);
+                if (responseURL.IndexOf("404.php") > -1 ||
+                        responseURL.IndexOf("500.php") > -1 ||
+                        responseURL.IndexOf("404.htm") > -1 ||
+                        responseURL.IndexOf("500.htm") > -1)
+                {
+                    //if(responseURL.)
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
         private void btnURL_Click(object sender, EventArgs e)
@@ -70,6 +98,12 @@ namespace URLChecker
             {
                 txtURL.Text = richTextBox1.Lines[i];
 
+                if (txtURL.Text.StartsWith("https"))
+                {
+                    string temp = txtURL.Text.Substring(8);
+                    txtURL.Text = temp;
+                    Console.WriteLine(txtURL.Text);
+                }
                 if (!txtURL.Text.StartsWith("http://"))
                     txtURL.Text = "http://" + txtURL.Text;
 
