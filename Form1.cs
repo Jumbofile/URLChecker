@@ -35,6 +35,12 @@ namespace URLChecker
             this.Cursor = Cursors.WaitCursor;
             Application.DoEvents();
 
+            //This is part 2 of crash prevent. Sets to nothing, if its nothing just ignore
+            if (url.Equals(""))
+            {
+                return true;
+            }
+
             Uri urlCheck = new Uri(url);
 
             WebRequest request = WebRequest.Create(urlCheck);
@@ -52,11 +58,11 @@ namespace URLChecker
                 Console.WriteLine(url + " : " + e);
                 if (e.Message.Contains("Server Unavailable") || e.Message.Contains("Forbidden") || e.Message.Contains("timed out"))
                 {
-                    return false;
+                    return false; //url doesnt exist or has 503/403 errors
                 }
                 else
                 {
-                    return true; //url does not exist
+                    return true; 
                 }
             }            
 
@@ -75,6 +81,7 @@ namespace URLChecker
             }
             else
             {
+                //Check for 404/500 errors
                 Console.WriteLine(responseURL);
                 if (responseURL.IndexOf("404.php") > -1 ||
                         responseURL.IndexOf("500.php") > -1 ||
@@ -91,6 +98,7 @@ namespace URLChecker
             }
         }
 
+        //Starts URL checking
         private void btnURL_Click(object sender, EventArgs e)
         {
             richTextBox2.Text = "";
@@ -98,16 +106,26 @@ namespace URLChecker
             {
                 txtURL.Text = richTextBox1.Lines[i];
 
+                //HTTPS caused a false negative, get rid of https
                 if (txtURL.Text.StartsWith("https"))
                 {
                     string temp = txtURL.Text.Substring(8);
                     txtURL.Text = temp;
                     Console.WriteLine(txtURL.Text);
                 }
+
+                //add in http to make a valid uri
                 if (!txtURL.Text.StartsWith("http://"))
                     txtURL.Text = "http://" + txtURL.Text;
 
+                //Bad url check, doesnt completely work
                 if (txtURL.Text == "http://" || txtURL.Text == string.Empty) return; //No URL entered
+
+                //space means not a url, make it blank to prevent crash
+                if (txtURL.Text.Contains(" "))
+                {
+                    txtURL.Text = "";
+                }
 
                 if (CheckURL(txtURL.Text))
                 {
