@@ -56,7 +56,7 @@ namespace URLChecker
             {
                 this.Cursor = Cursors.Default;
                 Console.WriteLine(url + " : " + e);
-                if (e.Message.Contains("Server Unavailable") || e.Message.Contains("Forbidden") || e.Message.Contains("timed out"))
+                if (e.Message.Contains("Server Unavailable") || e.Message.Contains("Forbidden") || e.Message.Contains("timed out") || e.Message.Contains("connection was closed")) 
                 {
                     return false; //url doesnt exist or has 503/403 errors
                 }
@@ -64,7 +64,7 @@ namespace URLChecker
                 {
                     return true; 
                 }
-            }            
+            }
 
             string responseURL = response.ResponseUri.ToString();
 
